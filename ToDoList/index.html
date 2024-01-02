@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>ToDo-List</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>To Do:</h1>
+
+        <div class="form">
+            <h2>What do you want to add to the list?</h2>
+            <form action="/added" id="addForm">
+                <input type="text" id="textInput" />
+                <div class="boxGroup">
+                    <div>
+                        <input type="radio" id="high" class="priorityBox" value="high" />
+                        <label for="high">
+                            <span class="priorityBlock highPriority"></span>High Priority</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="medium" class="priorityBox" value="medium" />
+                        <label for="medium">
+                            <span class="priorityBlock mediumPriority"></span>Medium Priority</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="low" class="priorityBox" value="low" />
+                        <label for="low">
+                            <span class="priorityBlock lowPriority"></span>Low Priority</label>
+                    </div>
+                </div>
+                <button class="submit">Submit</button>
+            </form>
+        </div>
+        <div class="madeList">
+        <h2>Here is your list:</h2>
+            <ul id="toDo">
+
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

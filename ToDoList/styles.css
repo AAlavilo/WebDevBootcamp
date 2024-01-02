@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5em;
+}
+
+h2 {
+    margin-bottom: 0.2em;
+}
+
+.boxGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1.5em;
+}
+
+.priorityBox {
+    margin-right: 10px;
+    margin-top: 10px;
+    
+}
+
+.form {
+    border: solid;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.priorityBlock {
+    display: inline-block;
+    width: 1.0em; /* Adjust the width of the colored block */
+    height: 1.0em; /* Adjust the height of the colored block */
+    margin-right: 5px; /* Adjust spacing between the block and label */
+    border-radius: 2px; /* Optional: Add border-radius for rounded corners */
+    justify-content: center;
+    margin-top: 10px;
+    border: solid black;
+}
+
+/* Define colors for different priority levels */
+.highPriority {
+    background-color: red; /* Color for high priority */
+}
+
+.mediumPriority {
+    background-color: yellow; /* Color for medium priority */
+}
+
+.lowPriority {
+    background-color: green; /* Color for low priority */
+}
+
+.priority-high {
+    width: 20px;
+    height: 20px;
+    background-color: red; /* You can customize the color for each priority level */
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.priority-medium {
+    width: 20px;
+    height: 20px;
+    background-color: yellow;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.priority-low {
+    width: 20px;
+    height: 20px;
+    background-color: green;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+#textInput {
+    width: 100%;
+    font-size: 1.8em;
+}
+
+.submit {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    width: 4em;
+    height: 2em;
+    font-size: 1.5em;
+}
+
+.madeList {
+    margin-top: 0.1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: solid black;
+}
+
+.deleteButton {
+    margin-left: 100px;
+}
