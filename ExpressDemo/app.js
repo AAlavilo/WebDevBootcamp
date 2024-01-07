@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
     res.send("This is the homepage");
 })
 
-//This doesn't actually get to reddit like this but here we can see a route where we use a path variable by using ":"
+//This doesn't actually get to reddit like this but here we can see a route where we use a path parameter by using ":"
 //Then in the console.log we use a template literal to add the name of the "subreddit" to the header.
 app.get("/r/:subreddit", (req, res) => {
     const { subreddit } = req.params;
@@ -29,8 +29,16 @@ app.get("/r/:subreddit", (req, res) => {
 
 app.get("/r/:subreddit/:postId", (req, res) => {
     const { subreddit, postId } = req.params;
-    res.send(`<h1>Viewing Post ID: ${postID} on the ${subreddit} subreddit!<h1>`);
+    res.send(`<h1>Viewing Post ID: ${postID} on the ${subreddit} subreddit!</h1>`);
     console.log("This is a subreddit")
+})
+
+app.get("/search", (req, res) => {
+    const { q } = req.query;
+    if(!q) {
+        res.send("Nothing found if nothing searched :)");
+    }
+    res.send(`<h1> Search results: ${q} </h1>`)
 })
 
 app.post("/cats", (req, res) => {
