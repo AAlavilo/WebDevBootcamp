@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
-const path = require("path")
+const path = require("path");
+const { v4: uuid } = require('uuid');
+uuid();
 
 //These two are parsing middleware
 app.use(express.urlencoded({ extended: true }));
@@ -10,18 +12,22 @@ app.set("view engine", "ejs");
 
 const comments = [
     {
+        id: uuid(),
         username: "Todd",
         comment: "LOOOL That is soooo funnyyyyy"
     },
     {
+        id: uuid(),
         username: "Mercel",
         comment: "Oh wow what blazing bazongas is this!?!"
     },
     {
+        id: uuid(),
         username: "Neppari",
         comment: "Absolutely thrilling~"
     },
     {
+        id: uuid(),
         username: "smolman",
         comment: "too small."
     }
@@ -47,17 +53,20 @@ app.get("/comments", (req, res) => {
 })
 
 app.get("/comments/new", (req, res) => {
+    res.render("comments/new")
+})
+
+app.post("/comments/new", (req, res) => {
     const { username, comment } = req.body;
-    comments.push({ username, comment });
+    comments.push({ username, comment, id: uuid() });
     res.redirect("/comments");
 })
 
-app.post("/comments", (req, res) => {
-    res.send("POST new comment")
-})
 
 app.get("/comments/:id", (req, res) => {
-    res.send("GET one comment")
+    const { id } = res.params.id;
+    const comment = comments.find(c => c.id === id);
+    res.render("/comments/show", { comment })
 })
 
 
@@ -65,11 +74,16 @@ app.get("/comments/:id", (req, res) => {
 //"put" on the other hand updates the whole resource which means that all the fields in the resource are sent
 // in the request body, even if they are not modified
 app.put("/comments/:id", (req, res) => {
-    res.send("UPDATE specific comment")
+    const { id } = res.params.id;
+    const comment = comments.find(c => c.id === id);
 })
 
 app.patch("/comments/:id", (req, res) => {    
-    res.send("UPDATE specific comment")
+    const { id } = res.params.id;
+    const newCommentText = req.body.comment;
+    const foundComment = comments.find(c => c.id === id);
+    foundComment.comment = newCommentText;
+    res.redirect("/comments");
 })
 
 app.delete("/comments/:id", (req, res) => {
