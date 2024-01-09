@@ -94,5 +94,7 @@ app.patch("/comments/:id", (req, res) => {
 })
 
 app.delete("/comments/:id", (req, res) => {
-    res.send("DELETE specific comment")
+    const { id } = res.params.id;
+    comments = comments.filter(c => c.id !== id);
+    res.redirect("/comments")
 })
