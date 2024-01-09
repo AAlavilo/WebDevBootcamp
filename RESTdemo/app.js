@@ -1,12 +1,14 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const methodOverride = require("method-override");
 const { v4: uuid } = require('uuid');
 uuid();
 
 //These two are parsing middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride("_method"));
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "ejs");
 
@@ -69,6 +71,11 @@ app.get("/comments/:id", (req, res) => {
     res.render("/comments/show", { comment })
 })
 
+app.get("/comments/:id/edit", (req, res) => {
+    const { id } = res.params.id;
+    const comment = comments.find(c => c.id === id);
+    res.render("/comments/edit", { comment })
+})
 
 //Both put and patch have update functionality but "patch" is used when you have certain fields you need to update
 //"put" on the other hand updates the whole resource which means that all the fields in the resource are sent
